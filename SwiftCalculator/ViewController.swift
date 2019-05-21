@@ -45,7 +45,7 @@ class ViewController: UIViewController {
         let strPoint: String = "0."
         let strTipConverted: String = strPoint + percent
         let fTipToOperatre: Float = Float(strTipConverted)!
-        txfTip.text = String(fTipToOperatre)
+//        txfTip.text = String(fTipToOperatre)
         return fTipToOperatre
     }
 
@@ -71,33 +71,33 @@ class ViewController: UIViewController {
             return false
         }else { return true }
     }
-    
-//    func printAmount(WithAmount strAmount: String, andTip strTip: String) {
-//        if strTip.isEmpty {
-//            txtTotal.text = strAmount
-//        }else{
-//            total.text = "" // CANTIDAD SUMADA
-//        }
-//    }
+
+    func printOnTipTexField() {
+        txfTip.text = String(self.realizaOperacionDelPorcentaje(fAmount: self.getAmount(strAccount: txfAccount.text!), fTipConvertido: self.convertTipToOperate(percent: percent)))
+    }
     
     //MARK: - A C T I O N S
     @IBAction func btn5Percent(_ sender: Any) {
         percent = "05"
+        self.printOnTipTexField()
         self.printTotal()
     }
     
     @IBAction func btn10Percent(_ sender: Any) {
         percent = "10"
+        self.printOnTipTexField()
         self.printTotal()
     }
     
     @IBAction func btn15Percent(_ sender: Any) {
         percent = "15"
+        self.printOnTipTexField()
         self.printTotal()
     }
     
     @IBAction func btn20Percent(_ sender: Any) {
         percent = "20"
+        self.printOnTipTexField()
         self.printTotal()
         
     }
