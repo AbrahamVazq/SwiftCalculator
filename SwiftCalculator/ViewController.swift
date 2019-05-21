@@ -27,6 +27,13 @@ class ViewController: UIViewController {
     var strTip:   String = ""
     
     //MARK: - L I F E · C Y C L E
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewDidLoad()
+        let tapRec: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        self.view.addGestureRecognizer(tapRec)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -63,6 +70,10 @@ class ViewController: UIViewController {
     func printTotal()
     {
         txtTotal.text = String(self.sumaDeResultados(fAmount: self.getAmount(strAccount: txfAccount.text!), fTip: self.realizaOperacionDelPorcentaje(fAmount: self.getAmount(strAccount: txfAccount.text!), fTipConvertido: self.convertTipToOperate(percent: percent))))
+    }
+    
+    @objc func dismissKeyboard(){
+        view.endEditing(true)
     }
     
     //MARK: - V A L I D A T I O N S
