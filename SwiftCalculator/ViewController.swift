@@ -35,8 +35,8 @@ class ViewController: UIViewController {
     //MARK: - F U N C T I O N S
     func getAmount(strAccount: String) -> Float
     {
-        fAmount = Float(strAccount)!
-        return fAmount
+            fAmount = Float(strAccount)!
+            return fAmount
     }
     
     // Devuelve el Tip para multiplicarlo
@@ -74,6 +74,21 @@ class ViewController: UIViewController {
 
     func printOnTipTexField() {
         txfTip.text = String(self.realizaOperacionDelPorcentaje(fAmount: self.getAmount(strAccount: txfAccount.text!), fTipConvertido: self.convertTipToOperate(percent: percent)))
+    }
+    
+    //MARK: - A L E R T
+    func showAlert(withTitle title: String, withMessage message:String)
+    {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let ok    = UIAlertAction(title: "OK", style: .default, handler: { action in })
+        let cancel = UIAlertAction(title: "Cancel", style: .default, handler: { action in })
+        
+        alert.addAction(ok)
+        alert.addAction(cancel)
+        
+        DispatchQueue.main.async(execute: {
+            self.present(alert, animated: true)
+        })
     }
     
     //MARK: - A C T I O N S
